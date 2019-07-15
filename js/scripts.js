@@ -44,6 +44,7 @@ $("#datepicker").on("change", function() {
           else {
             $("#copyright").text("Image Credits: " + "Public Domain");
           }
+           $("#imgTitle").text(result.title);
           $("#description").text(result.explanation);
         }
       }); // ajax
@@ -53,34 +54,9 @@ $("#datepicker").on("change", function() {
 
 function initDatePicker() {
     $("#datepicker").datepicker();
-    console.log("datepicker ok")
+    $("#resultStatus").html("<span class='alert alert-info' role='alert'> Please select a date between " + 
+                                   START_DATE + " and " + today +". <span>"); 
+    //console.log("datepicker ok")
   } 
-
-function loadStates(){
-$.ajax({
-  url: url,
-  success: function(result){
-  if("copyright" in result) {
-    $("#copyright").text("Image Credits: " + result.copyright);
-  }
-  else {
-    $("#copyright").text("Image Credits: " + "Public Domain");
-  }
-  
-  if(result.media_type == "video") {
-    $("#resultImg").css("display", "none"); 
-    $("#apod_vid_id").attr("src", result.url);
-  }
-  else {
-    $("#apod_vid_id").css("display", "none"); 
-    $("#resultImg").attr("src", result.url);
-  }
-  $("#reqObject").text(url);
-  $("#returnObject").text(JSON.stringify(result, null, 4));  
-  $("#apod_explaination").text(result.explanation);
-  $("#apod_title").text(result.title);
-}
-});
-}
 
 initDatePicker();
