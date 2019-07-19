@@ -43,6 +43,7 @@
       <!-- (4) START resultsDisplay -- Takes up 2nd and 3rd column and starts on third row-->
       <div id="resultsDisplay">
         <h4 id = "imgTitle"></h4>
+        <iframe id="resultVid" type="text/html" width="640" height="385" frameborder="0"></iframe>
         <figure id="results"><a id="hdLink" href=""><img src="" alt="" id="resultImg" width="400px"></a>
         <figcaption id="copyright"></figcaption></figure>
         <span id="description"></span>

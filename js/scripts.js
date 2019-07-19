@@ -27,8 +27,16 @@ $("#datepicker").on("change", function() {
                                    START_DATE + " and " + today +". <span>"); 
         },
         success: function(result, status) {
-         //alert(status);
+         //alert(result.media_type);
              $("#resultStatus").html("<span class='alert alert-success' role='alert'> Fetching results for " + tempDate + ". <span>");
+           if(result.media_type == "video") {
+              $("#results").hide();
+              $("#resultVid").show();
+              $("#resultVid").attr("src", result.url);
+             }
+          else { console.log("img");
+              $("#resultVid").hide();
+              $("#results").show(); 
             // Display SD image with link to HD image if it exists
             if(result.hdurl)
                {
@@ -36,7 +44,7 @@ $("#datepicker").on("change", function() {
                }
               $("#resultImg").attr("src", result.url);
               $("#resultImg").attr("alt", result.title);
-          
+          }
           // Display copyright info if it exists
            if(result.copyright) {
              $("#copyright").text("Image Credits: " + result.copyright);
